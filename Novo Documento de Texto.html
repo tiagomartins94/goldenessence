@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NightForge Welding — Mobile & Precision Fabrication</title>
+  <meta name="description" content="Soldadura e fabrico de precisão — MIG • TIG • Eletrodo. Serviço móvel 24/7. Orçamentos rápidos e documentação técnica." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ======= THEME: neon/industrial (100% responsive) ======= */
+    :root{
+      --bg:#0c0f16;--panel:#0f1524;--ink:#e6f1ff;--muted:#9bb1d1;--line:rgba(153,182,214,.18);
+      --neon:#7df9ff;--amber:#ffb000;--radius:18px;--ring:rgba(125,249,255,.45);--shadow:0 24px 80px rgba(0,0,0,.55);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{font-family:Urbanist,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-text-size-adjust:100%}
+    img{max-width:100%;display:block;height:auto}
+    a{color:inherit;text-decoration:none}
+
+    /* ======= ACCESSIBILITY/UTILS ======= */
+    .container{max-width:var(--max);margin:0 auto;padding:0 clamp(12px,3.5vw,40px)}
+    .section{padding:clamp(64px,7vw,96px) 0;border-bottom:1px solid var(--line)}
+    h1{font-size:clamp(2rem,3.4vw+1rem,4.4rem);line-height:1.1;margin:0}
+    h2{font-size:clamp(1.4rem,1.2vw+1rem,2.2rem);margin:0 0 .4rem}
+    .lead{color:#cfe2ff;max-width:65ch}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.85rem 1.05rem;border-radius:12px;border:1px solid var(--line);background:#0c1220;max-width:100%}
+    .btn.primary{background:linear-gradient(90deg,var(--amber),#ff6a00);color:#0b0b0b;border:none}
+    .btn.ghost{border-color:rgba(255,255,255,.2)}
+    .actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem}
+
+    /* ======= TOP NAVBAR ======= */
+    header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg, rgba(12,15,22,.92), rgba(12,15,22,.6));backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav{max-width:var(--max);margin:0 auto;padding:12px clamp(12px,3.5vw,40px);display:flex;align-items:center;gap:16px}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:900;white-space:nowrap}
+    .logo{height:40px;width:40px;border-radius:12px;background:radial-gradient(circle at 30% 30%, var(--amber), #ff6a00 60%);box-shadow:0 0 30px rgba(255,186,0,.45) inset, 0 10px 30px rgba(255,186,0,.35);display:grid;place-items:center;color:#0b0b0b}
+    .grow{flex:1;min-width:12px}
+    .links{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+    .links a{display:inline-flex;align-items:center;gap:.45rem;padding:.55rem .75rem;border-radius:12px;border:1px solid transparent;color:#cfe2ff}
+    .links a:hover{border-color:var(--line);background:#0e1423}
+    .cta{display:inline-flex;align-items:center;gap:.55rem;background:linear-gradient(90deg,var(--neon),#7effa5);color:#02131a;font-weight:900;padding:.7rem 1rem;border-radius:12px;border:1px solid rgba(0,0,0,.2);box-shadow:var(--shadow)}
+    .menu-btn{display:none;border:1px solid var(--line);background:#0c1220;color:#cfe2ff;border-radius:10px;padding:.6rem .75rem}
+
+    @media (max-width: 920px){
+      .links{display:none}
+      .menu-btn{display:inline-flex}
+      header.open .links{display:flex;position:absolute;left:0;right:0;top:64px;padding:12px clamp(12px,3.5vw,40px);gap:8px;flex-wrap:wrap;background:#0c1220;border-bottom:1px solid var(--line)}
+    }
+
+    /* ======= HERO ======= */
+    .hero{position:relative;background:
+      radial-gradient(60rem 40rem at 75% -10%, rgba(125,249,255,.15), transparent),
+      radial-gradient(40rem 28rem at -20% 10%, rgba(255,176,0,.12), transparent);
+    }
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(16px,4vw,32px);align-items:center}
+    @media (max-width: 1024px){.hero-wrap{grid-template-columns:1fr}}
+    .tag{display:inline-flex;align-items:center;gap:.5rem;font-family:"IBM Plex Mono",monospace;background:rgba(125,249,255,.12);border:1px solid rgba(125,249,255,.35);color:var(--neon);padding:.35rem .6rem;border-radius:999px}
+    .hero-card{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,#0a1220,#0a0f1a);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+    .glow{position:absolute;inset:-2px;border-radius:24px;padding:2px;background:linear-gradient(120deg, rgba(125,249,255,.6), rgba(255,176,0,.5), transparent);-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+    .monitor{position:relative;aspect-ratio:16/10;background:#06090f}
+    .monitor img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+    .monitor .scrim{position:absolute;inset:0;background:radial-gradient(1200px 400px at 80% 20%, rgba(255,176,0,.25), transparent)}
+    .monitor .overlay{position:absolute;inset:auto 0 0 0;background:linear-gradient(to top, rgba(0,0,0,.65), transparent)}
+    .monitor .meta{position:absolute;bottom:8px;left:10px;right:10px;display:flex;justify-content:space-between;color:#cfe2ff;font-size:clamp(.84rem, .6vw + .6rem, .95rem)}
+
+    /* ======= BAND ======= */
+    .band{position:relative;background:linear-gradient(90deg, rgba(125,249,255,.08), rgba(255,178,0,.08));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .band .track{display:flex;gap:2.2rem;white-space:nowrap;animation:scroll 30s linear infinite;color:#9fd8ff;padding:12px 0}
+    @keyframes scroll{to{transform:translateX(-50%)}}
+
+    /* ======= GRIDS (auto-fit) ======= */
+    .grid{display:grid;gap:clamp(12px,2.5vw,16px)}
+    .cols-2{grid-template-columns:1.2fr .8fr}
+    @media (max-width: 980px){.cols-2{grid-template-columns:1fr}}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px,1fr));gap:clamp(12px,2.5vw,16px)}
+    .card{border:1px solid var(--line);background:rgba(255,255,255,.04);backdrop-filter:blur(4px);border-radius:var(--radius);padding:clamp(.9rem,1.2vw,1.1rem)}
+    .card h3{margin:.2rem 0 .3rem}
+
+    .spec{position:sticky;top:92px;border:1px dashed rgba(125,249,255,.45);border-radius:16px;padding:1rem;background:#0b1220}
+    .pill{display:inline-flex;align-items:center;gap:.4rem;font-family:"IBM Plex Mono",monospace;background:#0a1424;border:1px solid var(--line);padding:.35rem .55rem;border-radius:999px;color:#a7c7ff}
+
+    /* ======= GALLERY / LIGHTBOX (auto-fit columns) ======= */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:12px;margin-top:1rem}
+    .gallery .thumb{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0a0f18}
+    .gallery .thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;opacity:.9;transition:transform .3s ease}
+    .gallery .thumb:hover img{transform:scale(1.03)}
+    .gallery .cap{position:absolute;left:0;right:0;bottom:0;padding:10px;background:linear-gradient(to top, rgba(0,0,0,.65), transparent);color:#cfe2ff}
+    .lightbox{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,6,12,.8);backdrop-filter:blur(4px);z-index:80}
+    .lightbox.open{display:flex}
+    .lightbox .frame{position:relative;max-width:min(96vw,1200px);max-height:86vh;border:1px solid var(--line);border-radius:16px;background:#05080f;box-shadow:var(--shadow);overflow:hidden}
+    .lightbox img{display:block;max-width:100%;max-height:min(80vh, calc(100dvh - 160px));width:auto;height:auto;margin:0 auto}
+    .lightbox .bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:8px 12px;border-top:1px solid var(--line);color:#cfe2ff}
+    .lb-btn{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--line);background:#0c1220;color:#cfe2ff;border-radius:10px;padding:.45rem .65rem}
+    .lb-btn.primary{background:linear-gradient(90deg,var(--neon),#7effa5);color:#02131a;border:none}
+    .lb-nav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+    .lb-nav button{pointer-events:auto;background:rgba(0,0,0,.35);border:1px solid var(--line);color:#e6f1ff;border-radius:10px;padding:.65rem .8rem;margin:0 8px}
+
+    /* ======= PRICING ======= */
+    .pricing{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px,1fr));gap:clamp(12px,2.5vw,16px);margin-top:1rem}
+    .price{border:1px solid var(--line);border-radius:16px;background:#0a1220;padding:1.1rem}
+    .price strong{font-size:clamp(1.6rem,2.2vw,2.1rem)}
+
+    /* ======= FAQ & FORMS ======= */
+    details{border:1px solid var(--line);border-radius:14px;padding:1rem;background:#0a1220}
+    details+details{margin-top:.7rem}
+    form{display:grid;gap:.8rem}
+    input,textarea{background:#0a1220;border:1px solid var(--line);color:var(--ink);padding:.85rem;border-radius:12px;max-width:100%}
+    input:focus,textarea:focus{outline:3px solid var(--ring);border-color:transparent}
+
+    /* ======= REVEAL + REDUCED MOTION ======= */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+    @media (prefers-reduced-motion: reduce){
+      .reveal{opacity:1;transform:none;transition:none}
+      .band .track{animation:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- ======= TOP NAV ======= -->
+  <header id="site-header">
+    <div class="nav">
+      <div class="brand"><div class="logo">⚡</div><strong>NightForge</strong></div>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav-links">Menu ▾</button>
+      <div class="grow"></div>
+      <div id="nav-links" class="links">
+        <a href="#hero">Início</a>
+        <a href="#services">Serviços</a>
+        <a href="#work">Trabalhos</a>
+        <a href="#pricing">Preços</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="cta">Pedir Orçamento</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======= MAIN ======= -->
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="section hero">
+      <div class="container hero-wrap">
+        <div>
+          <span class="tag">ISO 3834 • EN 1090 • AWS D1.1</span>
+          <h1 style="margin-top:.6rem">Soldadura After‑Hours, <span style="color:var(--neon)">On‑Site</span> ou <span style="color:var(--amber)">Em Oficina</span>.</h1>
+          <p class="lead">Precisão MIG / TIG / Eletrodo em aço carbono, inox e alumínio. Chegamos rápido e deixamos as peças mais retas e fortes do que as encontrámos.</p>
+          <div class="actions">
+            <a class="btn primary" href="#contact">Pedir Orçamento →</a>
+            <a class="btn ghost" href="#work">Ver Provas</a>
+          </div>
+        </div>
+        <div>
+          <div class="hero-card reveal">
+            <div class="glow" aria-hidden="true"></div>
+            <div class="monitor">
+              <img alt="faíscas de soldadura" src="https://images.unsplash.com/photo-1542332213-9b6bb3a7b9b9?q=80&w=1200&auto=format&fit=crop"/>
+              <div class="scrim" aria-hidden="true"></div>
+              <div class="overlay"></div>
+              <div class="meta">
+                <span>⚙ MIG • TIG • Eletrodo</span>
+                <span>🚚 Móvel • 24/7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="band" aria-hidden="true">
+      <div class="container">
+        <div class="track" style="width:200%">• Industrial • Alimentar • Construção • Marinha • Energia • Arquitetura • Automóvel • Industrial • Alimentar • Construção • Marinha • Energia • Arquitetura • Automóvel •</div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="container grid cols-2">
+        <div>
+          <h2>Serviços</h2>
+          <p class="lead">Cordões limpos e resistentes, com documentação pronta para inspeção.</p>
+          <div class="cards" style="margin-top:1rem">
+            <div class="card reveal"><h3>Fabrico à Medida</h3><p class="muted">Estruturas, guardas, corrimãos, portões, gabaritos e dispositivos.</p></div>
+            <div class="card reveal"><h3>Estrutural & Campo</h3><p class="muted">Soldadura EN 1090 em obra, montagens, retrofits e urgências.</p></div>
+            <div class="card reveal"><h3>Reparação Industrial</h3><p class="muted">Veios, carcaças, transportadores e equipamento pesado.</p></div>
+            <div class="card reveal"><h3>Alumínio & Inox</h3><p class="muted">TIG de chapa fina, acabamentos sanitários e passivação.</p></div>
+            <div class="card reveal"><h3>Prototipagem</h3><p class="muted">Iterações rápidas com engenharia; séries curtas.</p></div>
+            <div class="card reveal"><h3>Metalomecânica de Obra</h3><p class="muted">Escadas, embebidos, pinos, suportes e ferragens.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="spec">
+            <h3 style="margin:.2rem 0 .6rem">Capacidades</h3>
+            <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem">
+              <span class="pill">MIG (GMAW)</span>
+              <span class="pill">TIG (GTAW)</span>
+              <span class="pill">Eletrodo (SMAW)</span>
+              <span class="pill">Aço</span>
+              <span class="pill">Inox</span>
+              <span class="pill">Alumínio</span>
+              <span class="pill">0,5–50 mm</span>
+              <span class="pill">±0,5 mm</span>
+            </div>
+            <div style="margin-top:.8rem" class="muted">Ficheiros: DXF, STEP, DWG, PDF • Acabamentos: jato, passivação, pintura/pó • WPS/PQR</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK (GALLERY) -->
+    <section id="work" class="section">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap">
+          <div>
+            <h2>Trabalhos</h2>
+            <p class="lead">Clique nas imagens para ampliar.</p>
+          </div>
+          <a class="btn ghost" href="#contact">Reservar</a>
+        </div>
+        <div class="gallery" id="gallery">
+          <a href="#" class="thumb reveal" data-full="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000&auto=format&fit=crop" data-caption="Longarinas de escada — estrutural">
+            <img alt="Longarinas de escada" src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop">
+            <div class="cap">Longarinas de escada</div>
+          </a>
+          <a href="#" class="thumb reveal" data-full="https://images.unsplash.com/photo-1531278718042-7f7c9fea0f4b?q=80&w=2000&auto=format&fit=crop" data-caption="TIG inox sanitário — acabamento alimentar">
+            <img alt="TIG sanitário" src="https://images.unsplash.com/photo-1531278718042-7f7c9fea0f4b?q=80&w=1200&auto=format&fit=crop">
+            <div class="cap">TIG inox sanitário</div>
+          </a>
+          <a href="#" class="thumb reveal" data-full="https://images.unsplash.com/photo-1517059224940-d4af9eec41e5?q=80&w=2000&auto=format&fit=crop" data-caption="Reparação de equipamento — linha de produção">
+            <img alt="Reparação" src="https://images.unsplash.com/photo-1517059224940-d4af9eec41e5?q=80&w=1200&auto=format&fit=crop">
+            <div class="cap">Reparação de equipamento</div>
+          </a>
+          <a href="#" class="thumb reveal" data-full="https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=2000&auto=format&fit=crop" data-caption="Corrimão arquitectónico — inox escovado">
+            <img alt="Corrimão" src="https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1200&auto=format&fit=crop">
+            <div class="cap">Corrimão arquitectónico</div>
+          </a>
+          <a href="#" class="thumb reveal" data-full="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=2000&auto=format&fit=crop" data-caption="Dispositivo maquinado e soldado — fixação de peças">
+            <img alt="Dispositivo" src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1200&auto=format&fit=crop">
+            <div class="cap">Dispositivo maquinado/soldado</div>
+          </a>
+          <a href="#" class="thumb reveal" data-full="https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=2000&auto=format&fit=crop" data-caption="Pala em alumínio — leve e resistente">
+            <img alt="Pala alumínio" src="https://images.unsplash.com/photo-1482192505345-5655af888cc4?q=80&w=1200&auto=format&fit=crop">
+            <div class="cap">Pala em alumínio</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Lightbox overlay -->
+      <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" hidden>
+        <div class="frame">
+          <div class="lb-nav">
+            <button class="prev" aria-label="Anterior">◀</button>
+            <button class="next" aria-label="Seguinte">▶</button>
+          </div>
+          <img id="lb-img" alt="Imagem ampliada" src=""/>
+          <div class="bar">
+            <div id="lb-cap">&nbsp;</div>
+            <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+              <button class="lb-btn" id="lb-close" aria-label="Fechar">Fechar ✕</button>
+              <a class="lb-btn primary" id="lb-download" download target="_blank" rel="noopener">Descarregar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <h2>Preços</h2>
+        <p class="lead">Tarifário claro; urgências 24/7.</p>
+        <div class="pricing">
+          <div class="price reveal"><h3>Oficina</h3><p><strong>€95</strong>/h</p><p class="muted">Fabrico, TIG/MIG, corte e acabamento.</p></div>
+          <div class="price reveal" style="outline:2px solid rgba(125,249,255,.3)"><h3>Serviço Móvel</h3><p><strong>€135</strong>/h</p><p class="muted">Unidade móvel, montagem e consumíveis incluídos.</p></div>
+          <div class="price reveal"><h3>Emergência</h3><p><strong>€195</strong>/h</p><p class="muted">Resposta prioritária 24/7.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ + CONTACT -->
+    <section id="faq" class="section">
+      <div class="container grid cols-2" style="align-items:start">
+        <div>
+          <h2>FAQ</h2>
+          <details class="reveal"><summary>Fornecem WPS/PQR e certificados?</summary><p class="muted">Sim. O dossiê pode incluir WPS/PQR, relatórios de inspeção e certificados de material.</p></details>
+          <details class="reveal"><summary>Área de cobertura?</summary><p class="muted">Normalmente 100 km; viagens mais longas por acordo.</p></details>
+          <details class="reveal"><summary>Trabalham fora de horas?</summary><p class="muted">Sim — noites/fins‑de‑semana e emergências 24/7.</p></details>
+        </div>
+        <div id="contact" class="card">
+          <h3>Pedido de Orçamento</h3>
+          <form id="quote-form" novalidate>
+            <input id="name" name="name" placeholder="Nome" required />
+            <input id="email" type="email" name="email" placeholder="Email" required />
+            <input id="phone" name="phone" placeholder="Telemóvel (opcional)" />
+            <textarea id="details" name="details" rows="5" placeholder="Materiais, espessura, quantidade, prazo…"></textarea>
+            <button class="cta" type="submit">Enviar Pedido</button>
+            <p id="form-msg" class="muted" aria-live="polite" style="min-height:1.4em"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="section" style="text-align:center">
+      <div class="container"><small style="color:var(--muted)">© <span id="year"></span> NightForge • Soldadura & Fabrico</small></div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile nav
+    const header = document.getElementById('site-header');
+    const btn = document.querySelector('.menu-btn');
+    if (btn){ btn.addEventListener('click', ()=>{ const open = header.classList.toggle('open'); btn.setAttribute('aria-expanded', String(open)); }); }
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }}) },{threshold:.12});
+    document.querySelectorAll('.reveal, .card, .price, .thumb').forEach(el=>io.observe(el));
+
+    // Form handler (demo)
+    const form = document.getElementById('quote-form');
+    const msg = document.getElementById('form-msg');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!form.checkValidity()){ msg.textContent = 'Por favor complete os campos obrigatórios.'; return; }
+      const data = Object.fromEntries(new FormData(form).entries());
+      console.log('Pedido de orçamento:', data);
+      msg.textContent = 'Obrigado! Recebemos o seu pedido.';
+      form.reset();
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ======= Gallery / Lightbox =======
+    (function(){
+      const gallery = document.getElementById('gallery');
+      const lb = document.getElementById('lightbox');
+      if(!gallery || !lb) return;
+      const img = document.getElementById('lb-img');
+      const cap = document.getElementById('lb-cap');
+      const closeBtn = document.getElementById('lb-close');
+      const dl = document.getElementById('lb-download');
+      const prev = lb.querySelector('.prev');
+      const next = lb.querySelector('.next');
+      const items = Array.from(gallery.querySelectorAll('.thumb'));
+      let i = 0;
+      const show = (k)=>{ i=(k+items.length)%items.length; const el=items[i]; img.src=el.dataset.full; img.alt=el.querySelector('img').alt; cap.textContent=el.dataset.caption||''; dl.href=el.dataset.full; };
+      const open = (k)=>{ show(k); lb.classList.add('open'); lb.removeAttribute('hidden'); document.body.style.overflow='hidden'; };
+      const close=()=>{ lb.classList.remove('open'); lb.setAttribute('hidden',''); document.body.style.overflow=''; };
+      items.forEach((el,idx)=> el.addEventListener('click', e=>{ e.preventDefault(); open(idx); }));
+      closeBtn.addEventListener('click', close);
+      lb.addEventListener('click', (e)=>{ if(e.target===lb) close(); });
+      prev.addEventListener('click', ()=> show(i-1));
+      next.addEventListener('click', ()=> show(i+1));
+      document.addEventListener('keydown', (e)=>{ if(lb.classList.contains('open')){ if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(i-1); if(e.key==='ArrowRight') show(i+1); }});
+      // Swipe
+      let x0=null; lb.addEventListener('touchstart', e=> x0 = e.touches[0].clientX);
+      lb.addEventListener('touchend', e=>{ if(x0==null) return; const dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40){ dx>0?show(i-1):show(i+1); } x0=null; });
+    })();
+  </script>
+</body>
+</html>
